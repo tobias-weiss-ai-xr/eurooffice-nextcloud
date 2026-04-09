@@ -59,7 +59,7 @@ class DocumentService {
         if (strlen($expected_key) > 20) {
             $expected_key = crc32($expected_key);
         }
-        $key = preg_replace("[^0-9-.a-zA-Z_=]", "_", (string) $expected_key);
+        $key = preg_replace("/[^0-9\-.a-zA-Z_=]/", "_", (string) $expected_key);
         return substr((string) $key, 0, min([strlen((string) $key), 20]));
     }
 
