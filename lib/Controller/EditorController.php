@@ -1529,7 +1529,7 @@ class EditorController extends Controller {
      */
     private function getFileIdByLink(string $link): array {
         $path = parse_url($link, PHP_URL_PATH);
-        $encodedPath = array_map(urlencode(...), explode("/", $path));
+        $encodedPath = array_map('urlencode', explode("/", $path));
         $parsedLink = str_replace($path, implode("/", $encodedPath), $link);
         if (filter_var($parsedLink, FILTER_VALIDATE_URL) === false) {
             return [null, true];
